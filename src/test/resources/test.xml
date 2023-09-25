@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="test" verbose="1" >
+    <parameter name="browser"  value="Android"/>
+    <test name="BeymenAppiumProject">
+        <classes>
+            <class name="testRunners.runner"/>
+        </classes>
+    </test>
+</suite>
