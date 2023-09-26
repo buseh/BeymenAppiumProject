@@ -27,6 +27,7 @@ public class CategoryPage extends BaseMethod {
     public void clickWomanCategory() {
         try {
             driver.findElement(woman).isDisplayed();
+            LOG.info(" Kadın kategorisi göründü. ");
         } catch (Exception e) {
             LOG.error(" Kadın kategorisi görünür degil! ");
         }
@@ -36,8 +37,9 @@ public class CategoryPage extends BaseMethod {
     public void clickAllWomen() {
         try {
             driver.findElement(allWomen).isDisplayed();
+            LOG.info(" Tüm kadın kategorisi göründü. ");
         } catch (Exception e) {
-            LOG.info(" Tüm kadın kategorisi alanı gorunur degil! ");
+            LOG.error(" Tüm kadın kategorisi alanı gorunur degil! ");
         }
         driver.findElement(allWomen).click();
         LOG.info(" Tüm kadın seçeneği seçildi. ");

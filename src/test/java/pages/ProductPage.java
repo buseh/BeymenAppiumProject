@@ -16,7 +16,7 @@ public class ProductPage extends BaseMethod {
     private static final Logger LOG = LogManager.getLogger(ProductPage.class);
     By products = MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"com.mobisoft.beymen:id/searchResult_recycler\")).scrollIntoView(new UiSelector().index(1))");
     By selectedProduct = MobileBy.xpath("(//android.widget.ImageView[@resource-id='com.mobisoft.beymen:id/ivProductImage'])[1]");
-    By productSize = MobileBy.AndroidUIAutomator("new UiSelector().resourceId(\"com.mobisoft.beymen:id/tvSizeName\").text(\"37\")");
+    By productSize = MobileBy.xpath("//androidx.recyclerview.widget.RecyclerView[@index='1']/*[@index='2']");
     By addToBasket = MobileBy.xpath("//android.widget.TextView[@resource-id='com.mobisoft.beymen:id/tvDisplayName']");
     By goToCart = By.id("android:id/button1");
 

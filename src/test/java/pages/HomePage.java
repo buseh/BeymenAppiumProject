@@ -16,7 +16,7 @@ public class HomePage extends BaseMethod {
     AppiumDriver driver;
     private static final Logger LOG = LogManager.getLogger(HomePage.class);
 
-    By locationActivation = MobileBy.xpath("//android.widget.Button[@index=1]");
+    By locationActivation = By.id("com.android.permissioncontroller:id/permission_allow_foreground_only_button");
     By categories = MobileBy.xpath("//android.widget.FrameLayout[@index=1 and @resource-id='com.mobisoft.beymen:id/navigation_category']");
 
     By banner = MobileBy.xpath("(//android.widget.ImageView[@resource-id='com.mobisoft.beymen:id/bannerImage'])[1]");
@@ -29,9 +29,10 @@ public class HomePage extends BaseMethod {
     public void locationActive() {
         try {
             driver.findElement(locationActivation).isDisplayed();
+            LOG.info(" Kullanırken konumu aktif olsun seçeneği görüldü. ");
         }
         catch (Exception e) {
-            LOG.info(" Konum ayarları bildirimi görünür degil! ");
+            LOG.error(" Kullanırken konumu aktif olsun seçeneği görülemedi!  ");
         }
         click(locationActivation);
         LOG.info(" Konum aktifleştirildi. ");
@@ -41,9 +42,10 @@ public class HomePage extends BaseMethod {
     {
         try {
             driver.findElement(categories).isDisplayed();
+            LOG.info(" Kategoriler butonu görüldü. ");
         }
         catch (Exception e) {
-            LOG.info(" Kategoriler butonu görünür degil! ");
+            LOG.error(" Kategoriler butonu görünür degil! ");
         }
         driver.findElement(categories).click();
         LOG.info(" Kategoriler butonuna tıklandı. ");

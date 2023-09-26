@@ -14,9 +14,9 @@ public class CartPage extends BaseMethod {
     By quantitiySelectDropdown = By.id("com.mobisoft.beymen:id/tvProductQuantity");
     By twoPieces = MobileBy.AndroidUIAutomator("new UiSelector().resourceId(\"com.mobisoft.beymen:id/title\").text(\"2\")");
 
-    By initialPrice = MobileBy.AndroidUIAutomator("new UiSelector().resourceId(\"com.mobisoft.beymen:id/tvPrice1\").text(\"3.049,00 TL\")");
+    By initialPrice = By.id("com.mobisoft.beymen:id/tvPrice1");
 
-    By updatedPrice = MobileBy.AndroidUIAutomator("new UiSelector().resourceId(\"com.mobisoft.beymen:id/tvPrice1\").text(\"6.098,00 TL\")");
+    By updatedPrice = By.id("com.mobisoft.beymen:id/tvPrice1");
     private String initialPriceText;
 
 
@@ -48,7 +48,7 @@ public class CartPage extends BaseMethod {
 
             if (initialPriceValue * 2 == updatedPriceValue) {
                 LOG.info(" Ürün adedi arttığında fiyat da aynı oranda artıyor. ");
-                LOG.error(" Fiyat iki katına çıktı:  " + updatedPriceText);
+                LOG.info(" Fiyat iki katına çıktı:  " + updatedPriceText);
             } else {
                 LOG.error(" Fiyat aynı oranda artmadı. Güncel Fiyat: " + updatedPriceText);
             }
