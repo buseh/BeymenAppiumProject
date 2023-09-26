@@ -11,12 +11,12 @@ public class CategoryPageStepDefinitions {
 
     @When("Kadin kategorisi secilir.")
     public void kadınAlaninaTiklanir() {
-        categoryPage.clickToWomenCategory();
+        categoryPage.clickWomanCategory();
     }
 
     @Then("Kadin kategorisinin alt kategorilerinin gorunur oldugu dogrulanır.")
     public void kadinKategorisininAltKategorilerininGorunurOlduguDogrulanır() {
-        categoryPage.checkkadinaltsecenek();
+        categoryPage.checkSubcategoriesVisible();
     }
 
     @When("Tum Kadin secenegi secilir.")

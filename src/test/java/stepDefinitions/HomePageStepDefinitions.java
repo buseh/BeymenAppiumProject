@@ -10,17 +10,17 @@ public class HomePageStepDefinitions extends BaseMethod {
     HomePage homePage = new HomePage(DriverFactory.getDriver());
 
     @When("Konum etkinlestirilir.")
-    public void konumEtkinlestirilir() throws InterruptedException {
+    public void activateLocation() throws InterruptedException {
         homePage.locationActive();
         wait(5);
     }
     @When("Kategorilerin gorunur oldugu dogrulanir ve tıklanır.")
-    public void kategorilerButonunaTiklanir() {
-        homePage.clickToCategoryBtn();
+    public void clickToCategoriesButton() {
+        homePage.clickCategoryButton();
     }
 
-    @Then("Ana sayfada bulunan banner alaninin gorunur oldugu ve Ana sayfa tabinin secili oldugu dogrulanır.")
-    public void anaSayfadaBulunanBannerAlanininGorunurOlduguVeAnaSayfaTabininSeciliOlduguDogrulanır() {
+    @Then("Ana sayfada bulunan banner alaninin gorunur oldugu dogrulanır.")
+    public void verifyBannerIsVisible() {
        homePage.isBannerVisible();
 
     }

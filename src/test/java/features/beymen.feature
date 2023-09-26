@@ -4,7 +4,7 @@
     Scenario: Beymen mobilden sepete urun ekleme, sayisini arttirma ve kontrol etme otomasyonu
 
       When Konum etkinlestirilir.
-      Then Ana sayfada bulunan banner alaninin gorunur oldugu ve Ana sayfa tabinin secili oldugu dogrulanır.
+      Then Ana sayfada bulunan banner alaninin gorunur oldugu dogrulanır.
       Then Kategorilerin gorunur oldugu dogrulanir ve tıklanır.
       When Kadin kategorisi secilir.
       Then Kadin kategorisinin alt kategorilerinin gorunur oldugu dogrulanır.

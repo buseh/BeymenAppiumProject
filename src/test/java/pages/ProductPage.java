@@ -14,48 +14,46 @@ public class ProductPage extends BaseMethod {
     AppiumDriver driver;
 
     private static final Logger LOG = LogManager.getLogger(ProductPage.class);
-
-    By product = MobileBy.xpath("(//android.widget.ImageView[@resource-id='com.mobisoft.beymen:id/ivProductImage'])[1]");
-    By addToBasket = MobileBy.xpath("//android.widget.TextView[@resource-id='com.mobisoft.beymen:id/tvDisplayName']");
+    By products = MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"com.mobisoft.beymen:id/searchResult_recycler\")).scrollIntoView(new UiSelector().index(1))");
+    By selectedProduct = MobileBy.xpath("(//android.widget.ImageView[@resource-id='com.mobisoft.beymen:id/ivProductImage'])[1]");
     By productSize = MobileBy.AndroidUIAutomator("new UiSelector().resourceId(\"com.mobisoft.beymen:id/tvSizeName\").text(\"37\")");
-    By sepeteEklenebilecekUrunler = MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"com.mobisoft.beymen:id/searchResult_recycler\")).scrollIntoView(new UiSelector().index(1))");
-
-    By goToBasket = By.id("android:id/button1");
+    By addToBasket = MobileBy.xpath("//android.widget.TextView[@resource-id='com.mobisoft.beymen:id/tvDisplayName']");
+    By goToCart = By.id("android:id/button1");
 
 
     public ProductPage(AppiumDriver driver)  {
         this.driver = driver;
     }
-    public boolean eklenebilecekUrunler() {
+    public boolean itemsEligableForCart() {
         WebDriverWait wait = new WebDriverWait(driver, 3);
         try {
-            WebElement bannerElement = wait.until(ExpectedConditions.visibilityOfElementLocated(sepeteEklenebilecekUrunler));
+            WebElement bannerElement = wait.until(ExpectedConditions.visibilityOfElementLocated(products));
             if (bannerElement.isDisplayed()) {
-                LOG.info("Eklenebilecek ürünler görünür.");
+                LOG.info(" Sepeteke eklenebilecek ürünler görünüyor. ");
                 return true;
             } else {
-                LOG.error("Ürünler görünür değil.");
+                LOG.error(" Ürünler görünür değil! ");
                 return false;
             }
         } catch (org.openqa.selenium.TimeoutException e) {
-            LOG.error("Ürünler belirli bir süre içinde görünür hale gelmedi.");
+            LOG.error(" Ürünler belirli bir süre içinde görünür hale gelmedi. ");
             return false;
         }
     }
     public void chooseProduct(){
-        click(product);
-        LOG.info("Ürün seçildi");
+        click(selectedProduct);
+        LOG.info(" Ürün seçildi. ");
     }
 
-    public void addToBasket() {
+    public void clickAddToBasket() {
         try {
             driver.findElement(addToBasket).isDisplayed();
         }
         catch (Exception e) {
-            LOG.info("Sepete eklerken hata olustu");
+            LOG.info(" Sepete eklerken hata oluştu! ");
         }
         driver.findElement(addToBasket).click();
-        LOG.info("Sepete ekle seçildi");
+        LOG.info(" Sepete ekle seçeneği seçildi. ");
     }
 
     public void chooseProductSize() {
@@ -63,21 +61,21 @@ public class ProductPage extends BaseMethod {
             driver.findElement(productSize).isDisplayed();
         }
         catch (Exception e) {
-            LOG.info("Urun boyutu secerken hata olustu");
+            LOG.info(" Ürün bedeni seçilemedi! ");
         }
         driver.findElement(productSize).click();
-        LOG.info("Beden seçimi yapıldı");
+        LOG.info(" Beden seçimi yapıldı. ");
     }
 
-    public void goToBasket() {
+    public void chooseGoToCart() {
         try {
-            driver.findElement(goToBasket).isDisplayed();
+            driver.findElement(goToCart).isDisplayed();
         }
         catch (Exception e) {
-            LOG.info("Sepete giderken hata olustu");
+            LOG.info(" Sepete giderken hata oluştu! ");
         }
-        driver.findElement(goToBasket).click();
-        LOG.info("Sepete gidildi.");
+        driver.findElement(goToCart).click();
+        LOG.info(" Sepete gidildi. ");
     }
 
 

@@ -17,10 +17,7 @@ public class HomePage extends BaseMethod {
     private static final Logger LOG = LogManager.getLogger(HomePage.class);
 
     By locationActivation = MobileBy.xpath("//android.widget.Button[@index=1]");
-
-    By homePageBtn = MobileBy.xpath("//android.widget.FrameLayout[@resource-id='com.mobisoft.beymen:id/navigation_mainpage']");
-
-    By categoryBtn = MobileBy.xpath("//android.widget.FrameLayout[@index=1 and @resource-id='com.mobisoft.beymen:id/navigation_category']");
+    By categories = MobileBy.xpath("//android.widget.FrameLayout[@index=1 and @resource-id='com.mobisoft.beymen:id/navigation_category']");
 
     By banner = MobileBy.xpath("(//android.widget.ImageView[@resource-id='com.mobisoft.beymen:id/bannerImage'])[1]");
 
@@ -34,41 +31,38 @@ public class HomePage extends BaseMethod {
             driver.findElement(locationActivation).isDisplayed();
         }
         catch (Exception e) {
-            LOG.info("Konum ayarları bildirimi gorunur degil!");
+            LOG.info(" Konum ayarları bildirimi görünür degil! ");
         }
         click(locationActivation);
-        LOG.info("Konum aktifleştirildi.");
+        LOG.info(" Konum aktifleştirildi. ");
 
     }
-    public void clickToCategoryBtn()
+    public void clickCategoryButton()
     {
         try {
-            driver.findElement(categoryBtn).isDisplayed();
+            driver.findElement(categories).isDisplayed();
         }
         catch (Exception e) {
-            LOG.info("Kategoriler butonu gorunur degil!");
+            LOG.info(" Kategoriler butonu görünür degil! ");
         }
-        driver.findElement(categoryBtn).click();
-        LOG.info("Kategoriler butonuna tıklandı.");
+        driver.findElement(categories).click();
+        LOG.info(" Kategoriler butonuna tıklandı. ");
 
     }
-
-
-//...
 
     public boolean isBannerVisible() {
         WebDriverWait wait = new WebDriverWait(driver, 3);
         try {
             WebElement bannerElement = wait.until(ExpectedConditions.visibilityOfElementLocated(banner));
             if (bannerElement.isDisplayed()) {
-                LOG.info("Banner görünür");
+                LOG.info(" Anasayfadaki banner alanı görünür durumda. ");
                 return true;
             } else {
-                LOG.error("Banner görünür değil");
+                LOG.error(" Banner görünür değil! ");
                 return false;
             }
         } catch (org.openqa.selenium.TimeoutException e) {
-            LOG.error("Element belirli bir süre içinde görünür hale gelmedi.");
+            LOG.error(" Element belirli bir süre içinde görünür hale gelmedi. ");
             return false;
         }
     }

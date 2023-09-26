@@ -1,5 +1,7 @@
 package util;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,6 +12,8 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseMethod extends DriverFactory {
     public WebDriverWait wait;
+    private static final Logger LOG = LogManager.getLogger(BaseMethod.class);
+
 
 
     public BaseMethod() {
@@ -20,19 +24,19 @@ public class BaseMethod extends DriverFactory {
         TimeUnit.SECONDS.sleep(time);
     }
     public void click(By key){
-        getDriver().findElement(key).click();  // click --- tıklamayı sağlar.
+        getDriver().findElement(key).click();
     }
     public String getProductPrice(By element) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, 10); // 10 saniyeye kadar bekle
+            WebDriverWait wait = new WebDriverWait(driver, 3);
             WebElement priceElement = wait.until(ExpectedConditions.visibilityOfElementLocated(element));
 
             String priceText = priceElement.getText();
             String cleanedPrice = priceText.replaceAll("[^0-9.]", "");
-            System.out.println("Sepet fiyatı: " + cleanedPrice);
+            LOG.info("Güncel sepet fiyatı: " + cleanedPrice);
             return cleanedPrice;
         } catch (Exception e) {
-            System.err.println("Sepet fiyatı alınamadı: " + e.getMessage());
+            LOG.error("Sepet fiyatı alınamadı: " + e.getMessage());
             return null;
         }
     }
