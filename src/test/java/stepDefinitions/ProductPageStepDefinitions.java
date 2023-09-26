@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.ProductPage;
@@ -19,7 +20,7 @@ public class ProductPageStepDefinitions extends BaseMethod {
     public void herhangiBirUrunSecilir() {
         productPage.chooseProduct();
     }
-    @When("Beden secimi yapilarak sepete eklenir." )
+    @And("Beden secimi yapilarak sepete eklenir." )
     public void urunSepeteEklenir() {
         productPage.clickAddToBasket();
         productPage.chooseProductSize();

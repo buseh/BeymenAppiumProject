@@ -11,8 +11,8 @@
       When Tum Kadin secenegi secilir.
       Then Sepete eklenebilecek urunlerin siralandigi gorulur.
       When Herhangi bir urun secilir
-      When Beden secimi yapilarak sepete eklenir.
+      And Beden secimi yapilarak sepete eklenir.
       Then “Urun sepetinize eklendi” bilgisinin gorunur oldugu dogrulanır.
       When Sepete Git secenegi secilir.
-      When Urun adedi 1 adet arttirilir.
+      And Urun adedi 1 adet arttirilir.
       Then Fiyat bilgisinin aynı oranda arttigi dogrulanir.
