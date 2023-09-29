@@ -14,7 +14,7 @@ public class ProductPage extends BaseMethod {
     AppiumDriver driver;
 
     private static final Logger LOG = LogManager.getLogger(ProductPage.class);
-    By products = MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"com.mobisoft.beymen:id/searchResult_recycler\")).scrollIntoView(new UiSelector().index(1))");
+    By products = By.id("com.mobisoft.beymen:id/layout_main_list");
     By selectedProduct = MobileBy.xpath("(//android.widget.ImageView[@resource-id='com.mobisoft.beymen:id/ivProductImage'])[1]");
     By productSize = MobileBy.xpath("//androidx.recyclerview.widget.RecyclerView[@index='1']/*[@index='2']");
     By addToBasket = MobileBy.xpath("//android.widget.TextView[@resource-id='com.mobisoft.beymen:id/tvDisplayName']");
@@ -25,7 +25,7 @@ public class ProductPage extends BaseMethod {
         this.driver = driver;
     }
     public boolean itemsEligableForCart() {
-        WebDriverWait wait = new WebDriverWait(driver, 3);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         try {
             WebElement bannerElement = wait.until(ExpectedConditions.visibilityOfElementLocated(products));
             if (bannerElement.isDisplayed()) {
@@ -36,7 +36,7 @@ public class ProductPage extends BaseMethod {
                 return false;
             }
         } catch (org.openqa.selenium.TimeoutException e) {
-            LOG.error(" Ürünler belirli bir süre içinde görünür hale gelmedi. ");
+            LOG.error(" Ürünler belirli bir süre içinde görünür hale gelmedi! ");
             return false;
         }
     }
@@ -50,7 +50,7 @@ public class ProductPage extends BaseMethod {
             driver.findElement(addToBasket).isDisplayed();
         }
         catch (Exception e) {
-            LOG.info(" Sepete eklerken hata oluştu! ");
+            LOG.error(" Sepete eklerken hata oluştu! ");
         }
         driver.findElement(addToBasket).click();
         LOG.info(" Sepete ekle seçeneği seçildi. ");
@@ -61,7 +61,7 @@ public class ProductPage extends BaseMethod {
             driver.findElement(productSize).isDisplayed();
         }
         catch (Exception e) {
-            LOG.info(" Ürün bedeni seçilemedi! ");
+            LOG.error(" Ürün bedeni seçilemedi! ");
         }
         driver.findElement(productSize).click();
         LOG.info(" Beden seçimi yapıldı. ");
@@ -72,7 +72,7 @@ public class ProductPage extends BaseMethod {
             driver.findElement(goToCart).isDisplayed();
         }
         catch (Exception e) {
-            LOG.info(" Sepete giderken hata oluştu! ");
+            LOG.error(" Sepete giderken hata oluştu! ");
         }
         driver.findElement(goToCart).click();
         LOG.info(" Sepete gidildi. ");

@@ -13,24 +13,21 @@ public class ProductPageStepDefinitions extends BaseMethod {
 
 
     @Then("Sepete eklenebilecek urunlerin siralandigi gorulur.")
-    public void sepeteEklenebilecekUrunlerinSiralandigiGorulur() {
+    public void productsCanBeAddedToCartVisible() {
         productPage.itemsEligableForCart();
     }
     @When("Herhangi bir urun secilir")
-    public void herhangiBirUrunSecilir() {
+    public void chooseproduct() {
         productPage.chooseProduct();
     }
     @And("Beden secimi yapilarak sepete eklenir." )
-    public void urunSepeteEklenir() {
+    public void addProdcutToBasket() {
         productPage.clickAddToBasket();
         productPage.chooseProductSize();
     }
-    @Then("“Urun sepetinize eklendi” bilgisinin gorunur oldugu dogrulanır.")
-    public void urunSepetinizeEklendiBilgisininGorunurOlduguDogrulanır() {
-    }
 
     @When("Sepete Git secenegi secilir.")
-    public void sepetSayfasinaGidilir() {
+    public void goToBasket() {
         productPage.chooseGoToCart();
     }
 

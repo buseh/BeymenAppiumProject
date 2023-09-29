@@ -7,8 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.concurrent.TimeUnit;
-
 
 public class BaseMethod extends DriverFactory {
     public WebDriverWait wait;
@@ -20,15 +18,12 @@ public class BaseMethod extends DriverFactory {
         wait = new WebDriverWait(driver, 5);
     }
 
-    public void wait(int time) throws InterruptedException {
-        TimeUnit.SECONDS.sleep(time);
-    }
     public void click(By key){
         getDriver().findElement(key).click();
     }
     public String getProductPrice(By element) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, 3);
+            WebDriverWait wait = new WebDriverWait(driver, 10);
             WebElement priceElement = wait.until(ExpectedConditions.visibilityOfElementLocated(element));
 
             String priceText = priceElement.getText();

@@ -45,7 +45,7 @@ public class CategoryPage extends BaseMethod {
         LOG.info(" Tüm kadın seçeneği seçildi. ");
     }
     public boolean checkSubcategoriesVisible() {
-        WebDriverWait wait = new WebDriverWait(driver, 3);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         try {
             WebElement bannerElement = wait.until(ExpectedConditions.visibilityOfElementLocated(subcategoriesOfWomen));
             if (bannerElement.isDisplayed()) {

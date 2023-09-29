@@ -10,9 +10,8 @@ public class HomePageStepDefinitions extends BaseMethod {
     HomePage homePage = new HomePage(DriverFactory.getDriver());
 
     @When("Konum etkinlestirilir.")
-    public void activateLocation() throws InterruptedException {
+    public void activateLocation(){
         homePage.locationActive();
-        wait(5);
     }
     @When("Kategorilerin gorunur oldugu dogrulanir ve tıklanır.")
     public void clickToCategoriesButton() {

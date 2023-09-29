@@ -43,14 +43,14 @@ public class CartPage extends BaseMethod {
         String updatedPriceText = getProductPrice(updatedPrice);
 
         if (initialPriceText != null && updatedPriceText != null) {
-            double initialPriceValue = Double.parseDouble(initialPriceText.replace(".", "").replace(",", "."));
-            double updatedPriceValue = Double.parseDouble(updatedPriceText.replace(".", "").replace(",", "."));
+            double initialPriceValue = Double.parseDouble(initialPriceText);
+            double updatedPriceValue = Double.parseDouble(updatedPriceText);
 
             if (initialPriceValue * 2 == updatedPriceValue) {
                 LOG.info(" Ürün adedi arttığında fiyat da aynı oranda artıyor. ");
                 LOG.info(" Fiyat iki katına çıktı:  " + updatedPriceText);
             } else {
-                LOG.error(" Fiyat aynı oranda artmadı. Güncel Fiyat: " + updatedPriceText);
+                LOG.error(" Fiyat aynı oranda artmadı! Güncel Fiyat: " + updatedPriceText);
             }
         } else {
             LOG.error(" Fiyatlar alınamadı! ");
